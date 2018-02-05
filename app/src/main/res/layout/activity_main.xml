@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#68392f"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="9">
+
+        <LinearLayout
+            android:background="#68392f"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="STORAGE FOLDER"
+                    android:textSize="25sp" />
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:background="@drawable/grid_items_border1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#68392f"
+                    android:ems="10"
+                    android:textColor="#ffffff"
+                    android:hint="Folder name"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/guest"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_toLeftOf="@+id/next"
+                    android:layout_toStartOf="@+id/next"
+                    android:background="@mipmap/preview" />
+
+
+                <ImageButton
+                    android:id="@+id/next"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/guest"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/next" />
+
+            </RelativeLayout>
+
+            <!--
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <Button
+                                android:id="@+id/capture"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:text="Pick"
+                                android:visibility="gone" />
+
+                        </LinearLayout>-->
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/video_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <!--    <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/linear1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/banner1"
+                    android:visibility="visible">
+
+
+                </LinearLayout>-->
+
+            <TextureView
+                android:id="@+id/iv_video"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:alpha="1"
+                tools:foreground="#000" />
+
+            <SurfaceView
+                android:id="@+id/surface_view"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!--<VideoView
+                android:id="@+id/iv_video"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent" />-->
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="#68392f"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:id="@+id/linear2"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/download"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

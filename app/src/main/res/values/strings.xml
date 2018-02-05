@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MediaPicker</string>
+    <string name="tab_title_video">Video</string>
+    <string name="tab_title_image">Image</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="title_activity_final">FinalActivity</string>
+</resources>

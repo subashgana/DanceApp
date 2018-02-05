@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+//apply from: '../deps.gradle'
+apply plugin: 'com.novoda.bintray-release'
+
+//./gradlew bintrayUpload
+
+publish {
+    userOrg = 'alhazmy13'
+    groupId = 'net.alhazmy13.MediaPicker'
+    artifactId = 'rxjava'
+    uploadName = 'MediaPickerRx'
+    publishVersion = '2.3.3'
+    desc = 'MediaPickerRx'
+    dryRun = false
+    website = 'https://github.com/alhzmy13/MediaPicker'
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildToolsVersion '25.0.2'
+}
+
+dependencies {
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile project(':libary')
+}
