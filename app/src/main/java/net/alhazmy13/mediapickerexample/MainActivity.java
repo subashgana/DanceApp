@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements TextureView.Surfa
 
     Bitmap finalbitmap;
 
+    public static String classname;
     ImageView iv;
     private MediaPlayer mMediaPlayer;
     //private TextureView mPreview;
@@ -171,7 +172,9 @@ public class MainActivity extends AppCompatActivity implements TextureView.Surfa
                 File dir = new File(file_path);
                 if (!dir.exists())
                     dir.mkdirs();//create a file to write bitmap data
-                startActivity(new Intent(getApplicationContext(), ThirdActivity.class));
+                Intent intent = new Intent(getApplicationContext(),ThirdActivity.class);
+                intent.putExtra("classname","mainactivity");
+                startActivity(intent);
 
             }
         });

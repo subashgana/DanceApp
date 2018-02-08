@@ -26,6 +26,7 @@ public class ThirdActivity extends Activity implements AdapterView.OnItemClickLi
     public static String strClassname = " ";
     public static String firstimage = " ";
     public static String secondimage = " ";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,7 @@ public class ThirdActivity extends Activity implements AdapterView.OnItemClickLi
 
         Intent intent = getIntent();
         strClassname = intent.getStringExtra("classname");
-        Toast.makeText(getApplicationContext(),strClassname,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), strClassname, Toast.LENGTH_SHORT).show();
         String file_path = Environment.getExternalStorageDirectory().getAbsolutePath()
                 + "/YourAlbum/";
         setGridAdapter(file_path);
@@ -108,33 +109,39 @@ public class ThirdActivity extends Activity implements AdapterView.OnItemClickLi
 
         if (gridItems.get(position).isDirectory()) {
             setGridAdapter(gridItems.get(position).getPath());
-        }
-        else if(strClassname.equals("compare1")){
-            Intent intent = new Intent(getApplicationContext(),CompareActivity.class);
-            firstimage =  Uri.parse(gridItems.get(position).getPath())+"";
-            startActivity(intent);
+        } else if (strClassname.equals("mainactivity")) {
+            shareImage(position);
+        } else {
+            if (strClassname.equals("compare1")) {
+                Intent intent = new Intent(getApplicationContext(), CompareActivity.class);
+                firstimage = Uri.parse(gridItems.get(position).getPath()) + "";
+                startActivity(intent);
 
-        }
-        else if(strClassname.equals("compare2")){
-            Intent intent = new Intent(getApplicationContext(),CompareActivity.class);
-            secondimage =  Uri.parse(gridItems.get(position).getPath())+"";
-            startActivity(intent);
+            } else if (strClassname.equals("compare2")) {
+                Intent intent = new Intent(getApplicationContext(), CompareActivity.class);
+                secondimage = Uri.parse(gridItems.get(position).getPath()) + "";
+                startActivity(intent);
 
-        }
-        else {
-            // Display the image
-            Intent share = new Intent(Intent.ACTION_SEND);
-            share.setType("image/jpeg");
-            //share.putExtra(Intent.EXTRA_EMAIL, new String[]{Constants.EMAILID_TO});
-            share.putExtra(Intent.EXTRA_SUBJECT, "Diabetes level");
-            share.putExtra(Intent.EXTRA_TEXT, "Image is attached");
-            //share.setData(Uri.parse(Constants.EMAILID_FROM));
-            share.setType("message/rfc822");
-            share.putExtra(Intent.EXTRA_STREAM,
-                    Uri.parse(gridItems.get(position).getPath()));
-            startActivity(Intent.createChooser(share, "Share Image"));
+            } else {
+                // Display the image
+                shareImage(position);
+            }
         }
 
+    }
+
+    private void shareImage(int position) {
+
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("image/jpeg");
+        //share.putExtra(Intent.EXTRA_EMAIL, new String[]{Constants.EMAILID_TO});
+        share.putExtra(Intent.EXTRA_SUBJECT, "Diabetes level");
+        share.putExtra(Intent.EXTRA_TEXT, "Image is attached");
+        //share.setData(Uri.parse(Constants.EMAILID_FROM));
+        share.setType("message/rfc822");
+        share.putExtra(Intent.EXTRA_STREAM,
+                Uri.parse(gridItems.get(position).getPath()));
+        startActivity(Intent.createChooser(share, "Share Image"));
     }
 
     /**
