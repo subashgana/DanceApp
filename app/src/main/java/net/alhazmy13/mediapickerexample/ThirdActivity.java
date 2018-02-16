@@ -32,6 +32,15 @@ public class ThirdActivity extends Activity implements AdapterView.OnItemClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.thirdactivity);
 
+
+
+        if (MainActivity.mMediaPlayer != null) {
+            // Make sure we stop video and release resources when activity is destroyed.
+            MainActivity.mMediaPlayer.stop();
+            MainActivity. mMediaPlayer.release();
+            MainActivity.mMediaPlayer = null;
+        }
+
         Intent intent = getIntent();
         strClassname = intent.getStringExtra("classname");
         Toast.makeText(getApplicationContext(), strClassname, Toast.LENGTH_SHORT).show();

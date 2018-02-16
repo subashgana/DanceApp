@@ -58,6 +58,14 @@ public class SecondActivity extends Activity {
 
 
 
+
+        if (MainActivity.mMediaPlayer != null) {
+            // Make sure we stop video and release resources when activity is destroyed.
+            MainActivity.mMediaPlayer.stop();
+            MainActivity. mMediaPlayer.release();
+            MainActivity.mMediaPlayer = null;
+        }
+
    /*     btnLoadImage.setOnClickListener(new OnClickListener() {
 
             @Override

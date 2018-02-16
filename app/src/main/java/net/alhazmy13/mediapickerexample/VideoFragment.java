@@ -219,6 +219,9 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
         }
     }
 
+
+
+
     @Override
     public void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int i, int i2) {
 
@@ -232,5 +235,17 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
     @Override
     public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (mMediaPlayer != null) {
+            // Make sure we stop video and release resources when activity is destroyed.
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+        }
     }
 }

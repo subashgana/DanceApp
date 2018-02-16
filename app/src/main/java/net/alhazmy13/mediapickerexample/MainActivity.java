@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements TextureView.Surfa
 
     public static String classname;
     ImageView iv;
-    private MediaPlayer mMediaPlayer;
+    public static MediaPlayer mMediaPlayer;
     //private TextureView mPreview;
     Surface surface;
 
@@ -140,6 +140,12 @@ public class MainActivity extends AppCompatActivity implements TextureView.Surfa
                                 public void run() {
                                     if (editText.getText().toString().length() > 0) {
 
+                                        if (mMediaPlayer != null) {
+                                            // Make sure we stop video and release resources when activity is destroyed.
+                                            mMediaPlayer.stop();
+                                            mMediaPlayer.release();
+                                            mMediaPlayer = null;
+                                        }
                                         Bitmap bitmap = finalbitmap;
                                         bitmap = getResizedBitmap(bitmap, 500);
                                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -147,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements TextureView.Surfa
                                         byte[] bytes = stream.toByteArray();
                                         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                                         intent.putExtra("BMP", bytes);
+
                                         startActivity(intent);
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Please give a folder name", Toast.LENGTH_LONG).show();
@@ -167,6 +174,14 @@ public class MainActivity extends AppCompatActivity implements TextureView.Surfa
         guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                if (mMediaPlayer != null) {
+                    // Make sure we stop video and release resources when activity is destroyed.
+                    mMediaPlayer.stop();
+                    mMediaPlayer.release();
+                    mMediaPlayer = null;
+                }
                 String file_path = Environment.getExternalStorageDirectory().getAbsolutePath()
                         + "/YourAlbum/" + "Test";
                 File dir = new File(file_path);
@@ -174,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements TextureView.Surfa
                     dir.mkdirs();//create a file to write bitmap data
                 Intent intent = new Intent(getApplicationContext(),ThirdActivity.class);
                 intent.putExtra("classname","mainactivity");
+
                 startActivity(intent);
 
             }
@@ -427,6 +443,12 @@ public class MainActivity extends AppCompatActivity implements TextureView.Surfa
     @Override
     public void pause() {
 
+        if (mMediaPlayer != null) {
+            // Make sure we stop video and release resources when activity is destroyed.
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+        }
     }
 
     @Override
