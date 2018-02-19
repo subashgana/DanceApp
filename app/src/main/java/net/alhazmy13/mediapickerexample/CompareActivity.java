@@ -112,17 +112,17 @@ public class CompareActivity extends Activity {
 
                 if (ThirdActivity.firstimage.equals(ThirdActivity.secondimage)) {
 
-                    Message = "Both are same";
+                    Message = "Pictures are matched";
 
 
                 }
                 else if(ThirdActivity.firstimage.equals("error.jpg"))
                 {
-
+                    Message = "Pictures are not  matched";
                 }
                 else{
 
-                    Message = "Both are not same";
+                    Message = "Pictures are not  matched";
                 }
 
                 progressDoalog = new ProgressDialog(CompareActivity.this);
